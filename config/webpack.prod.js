@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 module.exports = {
@@ -8,17 +8,17 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: '[name]-[contenthash].js',
-    clean: true
+    clean: true,
   },
 
   module: {
     rules: [
-      {test: /\.css$/i,use: [MiniCssExtractPlugin.loader, "css-loader"],}
+      { test: /\.css$/i, use: [MiniCssExtractPlugin.loader, 'css-loader'] },
     ],
   },
 
   plugins: [
-    new HtmlWebpackPlugin({template: './src/template/index.html'}),
-    new MiniCssExtractPlugin({filename : "[name]-[hash].css"})
+    new HtmlWebpackPlugin({ template: './src/template/index.html' }),
+    new MiniCssExtractPlugin({ filename: '[name]-[hash].css' }),
   ],
 };
