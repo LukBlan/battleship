@@ -1,8 +1,8 @@
 /* eslint-env jest */
-import { GameBoard } from '../../src/domain/board/game-board';
 import { GameBoardFactory } from '../../src/domain/board/game-board-factory';
 import { Ship } from '../../src/domain/ship';
 import { Coordinates } from '../../src/domain/coordinates';
+import { GameBoard } from '../../src/domain/board/game-board';
 
 describe('GameBoard class', () => {
   const gameBoardFactory = new GameBoardFactory();
@@ -27,7 +27,7 @@ describe('GameBoard class', () => {
 
   describe('canPlaceShip', () => {
     it('should let you locate a ship if it fit on the board', () => {
-
+      expect(gameBoard.canPlaceShip(coordinates, ship, true)).toBeTruthy();
     });
 
     it('should return false when trying to place the same ship in the same coordinates', () => {
@@ -44,6 +44,16 @@ describe('GameBoard class', () => {
     it('should return false then trying to locate a ship on bottom left corner vertically', () => {
       const bottomLeftCorner = new Coordinates(0, 9);
       expect(gameBoard.canPlaceShip(bottomLeftCorner, ship, false)).toBeFalsy();
+    });
+  });
+
+  describe('', () => {
+    it('should hit ship in place', () => {
+      const mockShip = new Ship(5);
+      const shipSpy = jest.spyOn(Ship.prototype, 'hit').mockImplementation(() => {});
+      gameBoard.placeShip(mockShip, coordinates, true);
+      gameBoard.attackPlace(coordinates);
+      expect(shipSpy).toBeCalled();
     });
   });
 });

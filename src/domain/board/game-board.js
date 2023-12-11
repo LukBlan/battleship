@@ -1,10 +1,22 @@
 class GameBoard {
   constructor(boardFactory, size) {
     this.whiteSpace = boardFactory.whiteSpace();
+    this.hitMark = boardFactory.hitBoardMark();
     this.board = boardFactory.createBoard(size);
     this.ships = new Map();
     this.shipCount = 0;
     this.size = size;
+  }
+
+  attackPlace(coordinates) {
+    const xPosition = coordinates.getX();
+    const yPosition = coordinates.getY();
+    const value = this.board[xPosition][yPosition];
+
+    if (this.ships.has(value)) {
+      const ship = this.ships.get(value);
+      ship.hit();
+    }
   }
 
   canPlaceShip(coordinates, ship, horizontal) {

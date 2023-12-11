@@ -1,5 +1,9 @@
 class GameBoardFactory {
   whiteSpace() {
+    return '-';
+  }
+
+  hitBoardMark() {
     return 'x';
   }
 

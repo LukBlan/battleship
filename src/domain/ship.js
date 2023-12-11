@@ -8,6 +8,10 @@ class Ship {
   getLength() {
     return this.length;
   }
+
+  hit() {
+
+  }
 }
 
 export { Ship };
