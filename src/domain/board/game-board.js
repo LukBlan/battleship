@@ -1,5 +1,3 @@
-import { shouldUseIcssPlugin } from 'css-loader/dist/utils';
-
 class GameBoard {
   constructor(boardFactory, size) {
     this.whiteSpace = boardFactory.whiteSpace();
