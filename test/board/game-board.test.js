@@ -12,6 +12,7 @@ describe('GameBoard class', () => {
 
   beforeEach(() => {
     gameBoard = new GameBoard(gameBoardFactory, 10);
+    jest.clearAllMocks();
   });
 
   describe('placeShip function', () => {
@@ -49,9 +50,8 @@ describe('GameBoard class', () => {
 
   describe('attackPlace', () => {
     it('should hit ship in place', () => {
-      const mockShip = new Ship(5);
-      const shipSpy = jest.spyOn(Ship.prototype, 'hit').mockImplementation(() => {});
-      gameBoard.placeShip(mockShip, coordinates, true);
+      const shipSpy = jest.spyOn(Ship.prototype, 'hit').mockImplementationOnce(() => {});
+      gameBoard.placeShip(ship, coordinates, true);
       gameBoard.attackPlace(coordinates);
       expect(shipSpy).toBeCalled();
     });
@@ -65,6 +65,21 @@ describe('GameBoard class', () => {
     it('should mark the grid after missing a shot', () => {
       gameBoard.attackPlace(coordinates);
       expect(gameBoard.emptyLocation(4, 4)).toBeFalsy();
+    });
+  });
+
+  describe('allShipAreSunk', () => {
+    it('should return true when all ships are sunk', () => {
+      const ship2 = new Ship(3);
+      const ship3 = new Ship(1);
+      gameBoard.placeShip(ship2, coordinates, true);
+      gameBoard.placeShip(ship3, new Coordinates(0, 0), true);
+      expect(gameBoard.allShipAreSunk()).toBeFalsy();
+      ship3.hit();
+      ship2.hit();
+      ship2.hit();
+      ship2.hit();
+      expect(gameBoard.allShipAreSunk()).toBeTruthy();
     });
   });
 });

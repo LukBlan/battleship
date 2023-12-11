@@ -1,3 +1,5 @@
+import { shouldUseIcssPlugin } from 'css-loader/dist/utils';
+
 class GameBoard {
   constructor(boardFactory, size) {
     this.whiteSpace = boardFactory.whiteSpace();
@@ -23,6 +25,11 @@ class GameBoard {
     }
   }
 
+  allShipAreSunk() {
+    const allShips = this.ships.values();
+    return Array.from(allShips).every((ship) => ship.isSunk());
+  }
+
   canPlaceShip(coordinates, ship, horizontal) {
     const shipLength = ship.getLength();
     return this.#notOutOfBoard(coordinates, shipLength, horizontal)
@@ -46,6 +53,7 @@ class GameBoard {
     }
 
     this.ships.set(shipMark, ship);
+    this.shipCount += 1;
   }
 
   #notOutOfBoard(coordinates, objectLength, horizontal) {
