@@ -2,6 +2,7 @@ class GameBoard {
   constructor(boardFactory, size) {
     this.whiteSpace = boardFactory.whiteSpace();
     this.hitMark = boardFactory.hitBoardMark();
+    this.missMark = boardFactory.missBoardMark();
     this.board = boardFactory.createBoard(size);
     this.ships = new Map();
     this.shipCount = 0;
@@ -16,6 +17,9 @@ class GameBoard {
     if (this.ships.has(value)) {
       const ship = this.ships.get(value);
       ship.hit();
+      this.board[xPosition][yPosition] = this.hitMark;
+    } else {
+      this.board[xPosition][yPosition] = this.missMark;
     }
   }
 

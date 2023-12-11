@@ -7,6 +7,10 @@ class GameBoardFactory {
     return 'x';
   }
 
+  missBoardMark() {
+    return 'o';
+  }
+
   createBoard(size) {
     const board = [];
     for (let i = 0; i < size; i += 1) {

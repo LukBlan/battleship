@@ -47,13 +47,24 @@ describe('GameBoard class', () => {
     });
   });
 
-  describe('', () => {
+  describe('attackPlace', () => {
     it('should hit ship in place', () => {
       const mockShip = new Ship(5);
       const shipSpy = jest.spyOn(Ship.prototype, 'hit').mockImplementation(() => {});
       gameBoard.placeShip(mockShip, coordinates, true);
       gameBoard.attackPlace(coordinates);
       expect(shipSpy).toBeCalled();
+    });
+
+    it('should mark the grid', () => {
+      gameBoard.placeShip(ship, coordinates, true);
+      gameBoard.attackPlace(coordinates);
+      expect(gameBoard.emptyLocation(4, 4)).toBeFalsy();
+    });
+
+    it('should mark the grid after missing a shot', () => {
+      gameBoard.attackPlace(coordinates);
+      expect(gameBoard.emptyLocation(4, 4)).toBeFalsy();
     });
   });
 });
