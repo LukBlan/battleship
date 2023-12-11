@@ -1,8 +1,7 @@
 class Ship {
   constructor(length) {
     this.length = length;
-    this.hits = length;
-    this.sunked = false;
+    this.hits = 0;
   }
 
   getLength() {
@@ -10,7 +9,11 @@ class Ship {
   }
 
   hit() {
+    this.hits += 1;
+  }
 
+  isSunk() {
+    return this.hits >= this.length;
   }
 }
 
