@@ -2,10 +2,25 @@
   position: absolute;
   top: 30%;
   left: 50%;
-  box-shadow: 0 0 2px rgba(255,255,255,0.5);
+  box-shadow: 0 0 2px rgba(255,255,255,0.5), 0 0 1px 110vh rgba(0,0,0,0.4);
   border-radius: 5px;
   background: black;
   color: white;
   padding: 10px;
   font-weight: bold;
+  cursor: pointer;
+  animation: showOnScreen 0.2s forwards;
+}
+
+@keyframes showOnScreen {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+
+  }
 }
