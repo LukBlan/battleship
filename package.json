@@ -6,7 +6,8 @@
   "scripts": {
     "build": "webpack --config config/webpack.prod.js",
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "subTree": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "",
