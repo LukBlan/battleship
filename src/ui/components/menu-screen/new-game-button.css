@@ -1,0 +1,33 @@
+.new-game-button {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 30%;
+  left: 50%;
+  box-shadow: 2px 5px 2px rgba(255,0,0,0.5), 0 0 1px 110vh rgba(0,0,0,0.4);
+  border-radius: 5px;
+  background: red;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  animation: showOnScreen 0.2s forwards;
+  border: 1px solid black;
+}
+
+.new-game-button:active {
+  transform: translateX(2px) translateY(5px);
+  box-shadow: 0 0 2px rgba(255,0,0,0.5), 0 0 1px 110vh rgba(0,0,0,0.4);
+}
+
+@keyframes showOnScreen {
+  0% {
+    opacity: 0;
+    scale: 0;
+  }
+
+  100% {
+    opacity: 1;
+    scale: 1;
+
+  }
+}
