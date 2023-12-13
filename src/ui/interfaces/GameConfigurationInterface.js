@@ -2,8 +2,9 @@ import { gameConfigurationScreen } from '../components/game-configuration-screen
 import { subscribe } from '../../services/pub-sub';
 
 class GameConfigurationInterface {
-  constructor(gameSection) {
+  constructor(gameSection, ships) {
     this.gameSection = gameSection;
+    this.ships = ships;
   }
 
   init() {
@@ -11,7 +12,7 @@ class GameConfigurationInterface {
   }
 
   renderGameConfiguration() {
-    const gameConfiguration = gameConfigurationScreen();
+    const gameConfiguration = gameConfigurationScreen(this.ships);
     this.gameSection.append(gameConfiguration);
   }
 }
