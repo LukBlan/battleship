@@ -17,6 +17,7 @@ function gameConfigurationScreen(ships, size) {
   const title = document.createElement('h2');
   const shipSection = generateShipSection(ships);
 
+  shipSection.classList.add('ships-section');
   screen.classList.add('configuration-screen');
   title.innerText = 'Arrange your boats';
   title.classList.add('configuration-title');
