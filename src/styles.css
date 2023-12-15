@@ -44,6 +44,6 @@ h1 {
 }
 
 .menu-button:active {
-  box-shadow: 0  0 1px rgb(33,33,33);
+  box-shadow: 0 0 1px rgb(33,33,33);
   transform: translateY(3px) translateX(1px);
 }

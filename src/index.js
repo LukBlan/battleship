@@ -20,7 +20,7 @@ const gameController = new GameController(game);
 
 const gameSection = document.querySelector('.game-section');
 const menuInterface = new MenuInterface(gameSection);
-const gameConfigurationInterface = new GameConfigurationInterface(gameSection, ships);
+const gameConfigurationInterface = new GameConfigurationInterface(gameSection, ships, 10);
 
 gameController.init();
 menuInterface.init();
