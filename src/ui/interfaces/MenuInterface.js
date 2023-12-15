@@ -1,4 +1,4 @@
-import { newGameButton } from '../components/menu-screen/new-game-button';
+import { newGameButton } from '../components/new-game-button/new-game-button';
 import { emit } from '../../services/pub-sub';
 
 class MenuInterface {

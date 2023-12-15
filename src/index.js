@@ -11,7 +11,9 @@ const players = [
   { name: 'Player2', size: 10 },
 ];
 
-const ships = [shipElement(3), shipElement(4)];
+const ships = [
+  shipElement(3), shipElement(4), shipElement(1), shipElement(2), shipElement(3),
+];
 
 const gameBoardFactory = new GameBoardFactory();
 const gameFactory = new GameFactory();

@@ -1,10 +1,10 @@
 .board {
   cursor: crosshair;
-  background-color: white;
+  background-color: rgb(0,0,255);
   display: grid;
   grid-template-rows: repeat(10, min-content);
   grid-template-columns: min-content;
-  box-shadow: 2px 3px 1px rgb(255,255,255);
+  box-shadow: 2px 3px 1px rgb(255,255,255), 2px 0 1px 2px rgb(255,255,255);
   border-radius: 5px;
 }
 
@@ -15,7 +15,6 @@
 .board > div > div {
   width: 50px;
   height: 50px;
-  background-color: rgb(0,0,255);
   border: 1px solid rgba(255,255,255,0.4);
 }
 
