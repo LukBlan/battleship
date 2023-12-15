@@ -6,6 +6,7 @@ class MenuInterface {
     this.gameSection = gameSection;
     this.menuButton = document.querySelector('.menu-button');
     this.newGameButton = newGameButton();
+    this.onClick = this.emitDisplayConfigurationScreen.bind(this);
   }
 
   init() {
@@ -15,11 +16,11 @@ class MenuInterface {
 
   toggleMenuOnScreen() {
     if (this.gameSection.contains(this.newGameButton)) {
+      this.newGameButton.removeEventListener('click', this.onClick);
       this.gameSection.removeChild(this.newGameButton);
-      this.newGameButton.removeEventListener('click', this.emitDisplayConfigurationScreen.bind(this));
     } else {
       this.gameSection.append(this.newGameButton);
-      this.newGameButton.addEventListener('click', this.emitDisplayConfigurationScreen.bind(this));
+      this.newGameButton.addEventListener('click', this.onClick);
     }
   }
 
