@@ -12,14 +12,15 @@ const ships = [
 ];
 
 const boardFactory = new GameBoardFactory();
-const boardBuilder = new GameBoardBuilder(boardFactory, 10);
+const boardBuilder = new GameBoardBuilder(boardFactory, 7);
 const gameFactory = new GameFactory(boardBuilder);
 const gameController = new GameController(gameFactory);
 
 const gameSection = document.querySelector('.game-section');
 const menuInterface = new MenuInterface(gameSection);
-const gameConfigurationInterface = new GameConfigurationInterface(gameSection, ships, 10);
+const gameConfigurationInterface = new GameConfigurationInterface(gameSection, ships, boardFactory);
 
+boardBuilder.init();
 menuInterface.init();
 gameConfigurationInterface.init();
 gameController.init();

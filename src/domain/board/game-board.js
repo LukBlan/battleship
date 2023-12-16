@@ -9,6 +9,10 @@ class GameBoard {
     this.size = size;
   }
 
+  getBoard() {
+    return this.board;
+  }
+
   attackPlace(coordinates) {
     const xPosition = coordinates.getX();
     const yPosition = coordinates.getY();

@@ -1,5 +1,4 @@
 import './game-configuration-screen.css';
-import { boardGrid } from '../board-grid/board-grid';
 
 function generateShipSection(ships) {
   const container = document.createElement('div');
@@ -11,12 +10,13 @@ function generateShipSection(ships) {
   return container;
 }
 
-function gameConfigurationScreen(ships, size) {
+function gameConfigurationScreen(ships) {
   const screen = document.createElement('div');
-  const board = boardGrid(size);
+  const board = document.createElement('div');
   const title = document.createElement('h2');
   const shipSection = generateShipSection(ships);
 
+  board.classList.add('board');
   shipSection.classList.add('ships-section');
   screen.classList.add('configuration-screen');
   title.innerText = 'Arrange your boats';
