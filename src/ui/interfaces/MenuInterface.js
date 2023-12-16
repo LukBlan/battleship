@@ -6,6 +6,7 @@ class MenuInterface {
     this.gameSection = gameSection;
     this.menuButton = document.querySelector('.menu-button');
     this.newGameButton = newGameButton();
+    // Saved function reference to later remove it with removeEventListener
     this.onClick = this.emitDisplayConfigurationScreen.bind(this);
   }
 
@@ -26,7 +27,7 @@ class MenuInterface {
 
   emitDisplayConfigurationScreen() {
     this.toggleMenuOnScreen();
-    emit('displayConfigurationScreen', null);
+    emit('configure-new-game', null);
   }
 }
 
