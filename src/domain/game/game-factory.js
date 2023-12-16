@@ -1,17 +1,19 @@
 import { Game } from './game';
 import { HumanPlayer } from '../players/HumanPlayer';
-import { GameBoard } from '../board/game-board';
 
 class GameFactory {
-  create(playersInfo, gameBoardFactory) {
-    const players = playersInfo.forEach((playerInfo) => {
-      const playerName = playerInfo.name;
-      const boardSize = playerInfo.size;
-      const board = new GameBoard(gameBoardFactory, boardSize);
-      return new HumanPlayer(playerName, board);
-    });
+  constructor(boardBuilder) {
+    this.boardBuilder = boardBuilder;
+  }
 
-    return new Game(players);
+  reset() {
+    this.boardBuilder.reset();
+  }
+
+  create() {
+    const playerBoard = this.boardBuilder.build();
+    const humanPlayer = new HumanPlayer(playerBoard);
+    return new Game([humanPlayer]);
   }
 }
 

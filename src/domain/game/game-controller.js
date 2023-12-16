@@ -1,10 +1,17 @@
+import { subscribe } from '../../services/pub-sub';
+
 class GameController {
-  constructor(game) {
-    this.game = game;
+  constructor(gameFactory) {
+    this.game = null;
+    this.gameFactory = gameFactory;
   }
 
   init() {
-    console.log('Game is starting');
+    subscribe('configure-new-game', this.newGameConfiguration.bind(this));
+  }
+
+  newGameConfiguration() {
+    this.gameFactory.reset();
   }
 }
 

@@ -1,6 +1,5 @@
 class HumanPlayer {
-  constructor(name, board) {
-    this.name = name;
+  constructor(board) {
     this.board = board;
   }
 }

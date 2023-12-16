@@ -9,7 +9,7 @@ class GameConfigurationInterface {
   }
 
   init() {
-    subscribe('displayConfigurationScreen', this.renderGameConfiguration.bind(this));
+    subscribe('configure-new-game', this.renderGameConfiguration.bind(this));
   }
 
   renderGameConfiguration() {
