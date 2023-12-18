@@ -38,11 +38,12 @@ function getIndexOfElementInParent(cell) {
   return Array.from(parent.children).indexOf(cell);
 }
 
-function placeShip(coordinate) {
-  const cell = getCellFromPositions(coordinate);
+function placeShip(placeShipObject) {
+  const cell = getCellFromPositions(placeShipObject);
+  const { shipLength } = placeShipObject;
   const column = getIndexOfElementInParent(cell) - deltaShipPosition;
   const row = getIndexOfElementInParent(cell.parentElement);
-  emit('place-ship', { row, column });
+  emit('place-ship', { row, column, shipLength });
 }
 
 subscribe('delta-ship-position', setDeltaPosition);

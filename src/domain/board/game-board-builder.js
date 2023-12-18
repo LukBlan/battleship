@@ -14,11 +14,15 @@ class GameBoardBuilder {
     subscribe('place-ship', this.placeShip.bind(this));
   }
 
-  placeShip(coordinateObject) {
-    const { row, column } = coordinateObject;
+  placeShip(placeShipObject) {
+    const { row, column, shipLength } = placeShipObject;
     const coordinate = new Coordinates(column, row);
-    this.board.placeShip(new Ship(3), coordinate, true);
-    this.emitBoard();
+    const ship = new Ship(shipLength);
+
+    if (this.board.canPlaceShip(coordinate, ship, true)) {
+      this.board.placeShip(new Ship(shipLength), coordinate, true);
+      this.emitBoard();
+    }
   }
 
   reset() {

@@ -39,10 +39,11 @@ function getBlockSelected(event) {
 }
 
 function locateShipOnGrid(event) {
+  const shipLength = event.target.children.length;
   const xPosition = event.clientX;
   const yPosition = event.clientY;
-  const coordinateObject = { xPosition, yPosition };
-  emit('ship-location-coordinates', coordinateObject);
+  const locateActionObject = { xPosition, yPosition, shipLength };
+  emit('ship-location-coordinates', locateActionObject);
 }
 
 function shipElement(size) {
