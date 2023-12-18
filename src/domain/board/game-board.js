@@ -59,8 +59,9 @@ class GameBoard {
   }
 
   #notOutOfBoard(coordinates, objectLength, horizontal) {
-    const position = (horizontal) ? coordinates.getX() : coordinates.getY();
-    return (objectLength + position) < this.size;
+    const indexPosition = (horizontal) ? coordinates.getX() : coordinates.getY();
+    const objectDeltaIndex = objectLength - 1;
+    return (indexPosition + objectDeltaIndex) < this.size;
   }
 
   #notShipAlreadyOnPlace(coordinates, shipLength, horizontal) {

@@ -42,6 +42,12 @@ describe('GameBoard class', () => {
       expect(gameBoard.canPlaceShip(topRightCorner, ship, true)).toBeFalsy();
     });
 
+    it('should return true when trying to locate a ship of size 1 in a corner', () => {
+      const corner = new Coordinates(9, 9);
+      const sizeOneShip = new Ship(1);
+      expect(gameBoard.canPlaceShip(corner, sizeOneShip, true)).toBeTruthy();
+    });
+
     it('should return false then trying to locate a ship on bottom left corner vertically', () => {
       const bottomLeftCorner = new Coordinates(0, 9);
       expect(gameBoard.canPlaceShip(bottomLeftCorner, ship, false)).toBeFalsy();
