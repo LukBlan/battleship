@@ -16,7 +16,7 @@ class GameBoardBuilder {
 
   placeShip(coordinateObject) {
     const { row, column } = coordinateObject;
-    const coordinate = new Coordinates(row, column);
+    const coordinate = new Coordinates(column, row);
     this.board.placeShip(new Ship(3), coordinate, true);
     this.emitBoard();
   }
