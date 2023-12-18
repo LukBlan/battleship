@@ -1,8 +1,8 @@
 import './styles.css';
 import { GameFactory } from './domain/game/game-factory';
 import { GameController } from './domain/game/game-controller';
-import { MenuInterface } from './ui/interfaces/MenuInterface';
-import { GameConfigurationInterface } from './ui/interfaces/GameConfigurationInterface';
+import { MenuInterface } from './ui/interfaces/menu-interface';
+import { GameConfigurationInterface } from './ui/interfaces/game-configuration-interface';
 import { shipElement } from './ui/components/ship-element/ship-element';
 import { GameBoardBuilder } from './domain/board/game-board-builder';
 import { GameBoardFactory } from './domain/board/game-board-factory';
