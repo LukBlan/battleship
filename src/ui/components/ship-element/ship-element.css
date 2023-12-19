@@ -14,3 +14,16 @@
   border-radius: 7px;
   box-shadow: 2px 2px 1px white;
 }
+
+/* Ship placed in grid */
+.cell.ship-block {
+  cursor: pointer;
+}
+
+.cell.ship-block {
+  animation: showUp 0.1s forwards;
+}
+
+.cell.ship-block:hover {
+  background-color: #747272;
+}
