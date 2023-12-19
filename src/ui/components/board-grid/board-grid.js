@@ -7,9 +7,7 @@ function generateCell(cellState, boardFactory) {
   if (cellState !== boardFactory.whiteSpace()
     && cellState !== boardFactory.hitBoardMark()
     && cellState !== boardFactory.missBoardMark()) {
-    const shipBlock = document.createElement('div');
-    shipBlock.classList.add('ship-block');
-    cell.append(shipBlock);
+    cell.classList.add('ship-block');
   }
   return cell;
 }

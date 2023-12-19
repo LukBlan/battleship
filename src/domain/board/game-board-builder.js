@@ -2,6 +2,7 @@ import { GameBoard } from './game-board';
 import { emit, subscribe } from '../../services/pub-sub';
 import { Coordinates } from '../coordinates';
 import { Ship } from '../ship';
+import { Location } from '../location';
 
 class GameBoardBuilder {
   constructor(boardFactory, size) {
@@ -12,15 +13,24 @@ class GameBoardBuilder {
 
   init() {
     subscribe('place-ship', this.placeShip.bind(this));
+    subscribe('rotate-ship', this.rotateShip.bind(this));
+  }
+
+  rotateShip(boardCoordinate) {
+    const { row, column } = boardCoordinate;
+    const objectInPosition = this.board.getObjectInPosition(row, column);
+    const { ship } = objectInPosition;
+    const horizontal = !objectInPosition.horizontal;
   }
 
   placeShip(placeShipObject) {
     const { row, column, shipLength } = placeShipObject;
-    const coordinate = new Coordinates(column, row);
+    const coordinates = new Coordinates(column, row);
     const ship = new Ship(shipLength);
+    const locationObject = new Location(coordinates, ship, true);
 
-    if (this.board.canPlaceShip(coordinate, ship, true)) {
-      this.board.placeShip(new Ship(shipLength), coordinate, true);
+    if (this.board.canPlaceShip(locationObject)) {
+      this.board.placeShip(locationObject);
       this.emitBoard();
     }
   }

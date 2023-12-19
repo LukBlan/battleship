@@ -1,10 +1,8 @@
 class GameBoard {
   constructor(boardFactory, size) {
-    this.whiteSpace = boardFactory.whiteSpace();
-    this.hitMark = boardFactory.hitBoardMark();
-    this.missMark = boardFactory.missBoardMark();
+    this.boardFactory = boardFactory;
     this.board = boardFactory.createBoard(size);
-    this.ships = new Map();
+    this.allLocatedShips = new Map();
     this.shipCount = 0;
     this.size = size;
   }
@@ -13,32 +11,46 @@ class GameBoard {
     return this.board;
   }
 
+  getLocationObject(row, column) {
+    const boardMark = this.board[row][column];
+    return this.allLocatedShips.get(boardMark);
+  }
+
+  getNewCoordinatesFromPlacedShip(row, column) {
+    const positionObject = this.getLocationObject(row, column);
+    const { ship, coordinates, horizontal } = positionObject;
+  }
+
   attackPlace(coordinates) {
     const xPosition = coordinates.getX();
     const yPosition = coordinates.getY();
-    const value = this.board[xPosition][yPosition];
+    const boardMark = this.board[xPosition][yPosition];
 
-    if (this.ships.has(value)) {
-      const ship = this.ships.get(value);
+    if (this.allLocatedShips.has(boardMark)) {
+      const location = this.allLocatedShips.get(boardMark);
+      const { ship } = location;
       ship.hit();
-      this.board[xPosition][yPosition] = this.hitMark;
+      this.board[xPosition][yPosition] = this.boardFactory.hitBoardMark();
     } else {
-      this.board[xPosition][yPosition] = this.missMark;
+      this.board[xPosition][yPosition] = this.boardFactory.missBoardMark();
     }
   }
 
   allShipAreSunk() {
-    const allShips = this.ships.values();
-    return Array.from(allShips).every((ship) => ship.isSunk());
+    const allLocationsObjects = this.allLocatedShips.values();
+    return Array.from(allLocationsObjects).every((locationObject) => {
+      const { ship } = locationObject;
+      return ship.isSunk();
+    });
   }
 
-  canPlaceShip(coordinates, ship, horizontal) {
-    const shipLength = ship.getLength();
-    return this.#notOutOfBoard(coordinates, shipLength, horizontal)
-      && this.#notShipAlreadyOnPlace(coordinates, shipLength, horizontal);
+  canPlaceShip(locationObject) {
+    return this.#notOutOfBoard(locationObject) && this.#notShipAlreadyOnPlace(locationObject);
   }
 
-  placeShip(ship, coordinates, horizontal) {
+  placeShip(locationObject) {
+    const { coordinates, ship, horizontal } = locationObject;
+    console.log(locationObject);
     let xPosition = coordinates.getX();
     let yPosition = coordinates.getY();
     const shipLength = ship.getLength();
@@ -54,17 +66,20 @@ class GameBoard {
       }
     }
 
-    this.ships.set(shipMark, ship);
+    this.allLocatedShips.set(shipMark, locationObject);
     this.shipCount += 1;
   }
 
-  #notOutOfBoard(coordinates, objectLength, horizontal) {
+  #notOutOfBoard(locationObject) {
+    const { coordinates, ship, horizontal } = locationObject;
     const indexPosition = (horizontal) ? coordinates.getX() : coordinates.getY();
-    const objectDeltaIndex = objectLength - 1;
-    return (indexPosition + objectDeltaIndex) < this.size;
+    const shipDeltaIndex = ship.length - 1;
+    return (indexPosition + shipDeltaIndex) < this.size;
   }
 
-  #notShipAlreadyOnPlace(coordinates, shipLength, horizontal) {
+  #notShipAlreadyOnPlace(locationObject) {
+    const { coordinates, ship, horizontal } = locationObject;
+    const shipLength = ship.getLength();
     let xPosition = coordinates.getX();
     let yPosition = coordinates.getY();
     let notShipOnPlace = true;
@@ -85,7 +100,7 @@ class GameBoard {
   }
 
   emptyLocation(row, column) {
-    return this.board[row][column] === this.whiteSpace;
+    return this.board[row][column] === this.boardFactory.whiteSpace();
   }
 }
 
