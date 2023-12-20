@@ -11,7 +11,17 @@ class PlaceShipInterface {
   }
 
   setBoardElement(newElement) {
+    newElement.addEventListener('click', this.rotateShip.bind(this));
     this.boardElement = newElement;
+  }
+
+  rotateShip(event) {
+    if (event.target.classList.contains('ship-block')) {
+      this.horizontalPosition = !this.horizontalPosition;
+      const column = this.getIndexOfElementInParent(event.target);
+      const row = this.getIndexOfElementInParent(event.target.parentElement);
+      emit('rotate-ship', { column, row });
+    }
   }
 
   init() {

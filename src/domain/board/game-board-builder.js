@@ -18,9 +18,11 @@ class GameBoardBuilder {
 
   rotateShip(boardCoordinate) {
     const { row, column } = boardCoordinate;
-    const objectInPosition = this.board.getObjectInPosition(row, column);
-    const { ship } = objectInPosition;
-    const horizontal = !objectInPosition.horizontal;
+
+    if (this.board.canRotateShipOnLocation(row, column)) {
+      this.board.rotateShip(row, column);
+      this.emitBoard();
+    }
   }
 
   placeShip(placeShipObject) {

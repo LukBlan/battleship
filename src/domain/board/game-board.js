@@ -1,3 +1,6 @@
+import { Location } from '../location';
+import { Coordinates } from '../coordinates';
+
 class GameBoard {
   constructor(boardFactory, size) {
     this.boardFactory = boardFactory;
@@ -7,8 +10,32 @@ class GameBoard {
     this.size = size;
   }
 
+  setBoard(newBoard) {
+    this.board = newBoard;
+  }
+
   getBoard() {
     return this.board;
+  }
+
+  removeShipFromLocation(locationObject, row, column) {
+    const boardMark = this.board[row][column];
+    const { coordinates, ship, horizontal } = locationObject;
+    let xPosition = coordinates.getX();
+    let yPosition = coordinates.getY();
+    const shipLength = ship.getLength();
+
+    for (let i = 0; i < shipLength; i += 1) {
+      this.board[yPosition][xPosition] = this.boardFactory.whiteSpace();
+
+      if (horizontal) {
+        xPosition += 1;
+      } else {
+        yPosition += 1;
+      }
+    }
+
+    this.allLocatedShips.delete(boardMark);
   }
 
   getLocationObject(row, column) {
@@ -16,9 +43,31 @@ class GameBoard {
     return this.allLocatedShips.get(boardMark);
   }
 
-  getNewCoordinatesFromPlacedShip(row, column) {
-    const positionObject = this.getLocationObject(row, column);
-    const { ship, coordinates, horizontal } = positionObject;
+  getRotateLocation(locationObject, row, column) {
+    const { coordinates, ship, horizontal } = locationObject;
+    const locationRow = coordinates.getY();
+    const locationColumn = coordinates.getX();
+    const shipLength = ship.getLength();
+    const newRow = (horizontal) ? (row - (column - locationColumn)) : row;
+    const newColumn = (horizontal) ? column : (column - (row - locationRow));
+    return new Location(new Coordinates(newColumn, newRow), ship, !horizontal);
+  }
+
+  rotateShip(row, column) {
+    const locationObject = this.getLocationObject(row, column);
+    const rotateLocation = this.getRotateLocation(locationObject, row, column);
+    this.removeShipFromLocation(locationObject, row, column);
+    this.placeShip(rotateLocation);
+  }
+
+  canRotateShipOnLocation(row, column) {
+    const locationObject = this.getLocationObject(row, column);
+    const futureBoard = new GameBoard(this.boardFactory, this.size);
+    const newLocation = this.getRotateLocation(locationObject, row, column);
+    const boardCopy = this.boardFactory.generateCopy(this.board);
+    futureBoard.setBoard(boardCopy);
+    futureBoard.removeShipFromLocation(locationObject, row, column);
+    return futureBoard.canPlaceShip(newLocation);
   }
 
   attackPlace(coordinates) {
@@ -50,7 +99,6 @@ class GameBoard {
 
   placeShip(locationObject) {
     const { coordinates, ship, horizontal } = locationObject;
-    console.log(locationObject);
     let xPosition = coordinates.getX();
     let yPosition = coordinates.getY();
     const shipLength = ship.getLength();
@@ -74,7 +122,7 @@ class GameBoard {
     const { coordinates, ship, horizontal } = locationObject;
     const indexPosition = (horizontal) ? coordinates.getX() : coordinates.getY();
     const shipDeltaIndex = ship.length - 1;
-    return (indexPosition + shipDeltaIndex) < this.size;
+    return indexPosition >= 0 && (indexPosition + shipDeltaIndex) < this.size;
   }
 
   #notShipAlreadyOnPlace(locationObject) {

@@ -31,6 +31,10 @@ class GameBoardFactory {
 
     return boardRow;
   }
+
+  generateCopy(board) {
+    return board.map((row) => [...row]);
+  }
 }
 
 export { GameBoardFactory };

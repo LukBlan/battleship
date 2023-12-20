@@ -103,13 +103,55 @@ describe('GameBoard class', () => {
     });
   });
 
-  describe('getNewCoordinatesFromPlacedShip', () => {
-    /*
-    it('should return a new coordinate based on the offset of the given row and column', () => {
-      gameBoard.placeShip(ship, coordinates, true);
-      expect(gameBoard.getNewCoordinatesFromPlacedShip(4, 5)).toEqual(new Coordinates(3, 7));
+  describe('canRotateShipOnLocation', () => {
+    beforeEach(() => {
+      gameBoard.placeShip(location);
     });
 
-     */
+    it('should return false when a ship rotation would locate a ship out of top board', () => {
+      gameBoard.placeShip(new Location(new Coordinates(0, 1), new Ship(4), true));
+      expect(gameBoard.canRotateShipOnLocation(1, 2)).toBeFalsy();
+    });
+
+    it('can rotate a ship in near a corner', () => {
+      gameBoard.placeShip(new Location(new Coordinates(0, 1), new Ship(4), true));
+      expect(gameBoard.canRotateShipOnLocation(1, 1)).toBeTruthy();
+    });
+
+    it('should return true if is the only ship in the board', () => {
+      expect(gameBoard.canRotateShipOnLocation(4, 5)).toBeTruthy();
+    });
+
+    it('should return false if there already a ship in the rotate position', () => {
+      const shipInRotatePosition = new Ship(3);
+      gameBoard.placeShip(new Location(new Coordinates(3, 3), shipInRotatePosition, true));
+      expect(gameBoard.canRotateShipOnLocation(4, 5)).toBeFalsy();
+    });
+
+    it('should not affect the current board', () => {
+      gameBoard.canRotateShipOnLocation(4, 5);
+      expect(gameBoard.emptyLocation(4, 4)).toBeFalsy();
+    });
+  });
+
+  describe('rotateShip', () => {
+    beforeEach(() => {
+      gameBoard.placeShip(location);
+      gameBoard.rotateShip(4, 5);
+    });
+
+    it('should rotate a ship and remove marks from new free spaces', () => {
+      expect(gameBoard.emptyLocation(4, 4)).toBeTruthy();
+      expect(gameBoard.emptyLocation(4, 6)).toBeTruthy();
+      expect(gameBoard.emptyLocation(4, 7)).toBeTruthy();
+    });
+
+    it('should place new marks in ship new place', () => {
+      expect(gameBoard.emptyLocation(3, 5)).toBeFalsy();
+      expect(gameBoard.emptyLocation(4, 5)).toBeFalsy();
+      expect(gameBoard.emptyLocation(5, 5)).toBeFalsy();
+      expect(gameBoard.emptyLocation(6, 5)).toBeFalsy();
+      expect(gameBoard.emptyLocation(7, 5)).toBeFalsy();
+    });
   });
 });
