@@ -47,7 +47,6 @@ class GameBoard {
     const { coordinates, ship, horizontal } = locationObject;
     const locationRow = coordinates.getY();
     const locationColumn = coordinates.getX();
-    const shipLength = ship.getLength();
     const newRow = (horizontal) ? (row - (column - locationColumn)) : row;
     const newColumn = (horizontal) ? column : (column - (row - locationRow));
     return new Location(new Coordinates(newColumn, newRow), ship, !horizontal);
