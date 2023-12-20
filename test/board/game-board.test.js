@@ -108,6 +108,11 @@ describe('GameBoard class', () => {
       gameBoard.placeShip(location);
     });
 
+    it('should return false when trying to rotate a ship with over other ship', () => {
+      gameBoard.placeShip(new Location(new Coordinates(3, 3), new Ship(3), true));
+      expect(gameBoard.canRotateShipOnLocation(3, 4)).toBeFalsy();
+    });
+
     it('should return false when a ship rotation would locate a ship out of top board', () => {
       gameBoard.placeShip(new Location(new Coordinates(0, 1), new Ship(4), true));
       expect(gameBoard.canRotateShipOnLocation(1, 2)).toBeFalsy();

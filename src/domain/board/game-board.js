@@ -139,8 +139,6 @@ class GameBoard {
       } else {
         yPosition += 1;
       }
-
-      i += 1;
     }
 
     return notShipOnPlace;

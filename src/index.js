@@ -12,7 +12,7 @@ const ships = [
 ];
 
 const boardFactory = new GameBoardFactory();
-const boardBuilder = new GameBoardBuilder(boardFactory, 7);
+const boardBuilder = new GameBoardBuilder(boardFactory, 8);
 const gameFactory = new GameFactory(boardBuilder);
 const gameController = new GameController(gameFactory);
 
