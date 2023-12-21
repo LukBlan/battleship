@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'press-start';
+  src: url("../assets/press-start.TTF");
+}
+
+@font-face {
+  font-family: 'arcade-classic';
+  src: url("../assets/arcade-classic.ttf");
+}
+
+@font-face {
+  font-family: 'invasion-2000';
+  src: url("../assets/invasion-2000.TTF");
+}
+
+:root {
+  --main-color: red;
+  --secondary-color: #595353;
+}
+
 *, *::after, *::before {
   margin: 0;
   padding: 0;
@@ -17,29 +37,33 @@ header {
   padding: 10px;
   display: grid;
   justify-content: center;
-  background-color: #000;
+  background-color: var(--main-color);
   align-items: center;
   box-shadow: 0 0 1px rgba(255,255,255,0.5);
 }
 
 h1 {
+  font-family: 'press-start', sans-serif;
+  padding: 10px;
   font-size: 4.5rem;
   grid-column: 3/4;
 }
 
 .game-section {
   position: relative;
+  background: radial-gradient(white, transparent);
 }
 
 .menu-button {
+  font-family: 'invasion-2000', sans-serif;
   cursor: pointer;
   box-shadow: 1px 4px 1px rgb(33,33,33);
   border: 1px solid black;
   padding: 8px 16px;
   font-weight: bold;
   color: white;
-  background: #333;
-  font-size: 1.2rem;
+  background: var(--main-color);;
+  font-size: 1.5rem;
   transition: all 0.1s;
 }
 
