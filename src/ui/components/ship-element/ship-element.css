@@ -11,8 +11,8 @@
   height: 50px;
   background-color: #595353;
   padding: 10px;
-  border-radius: 7px;
-  box-shadow: 2px 2px 1px white;
+  border-radius: 100%;
+  box-shadow: 1px 3px 1px white;
 }
 
 /* Ship placed in grid */

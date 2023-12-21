@@ -1,8 +1,18 @@
 import './board-grid.css';
 
+function toggleHoverEffect(event) {
+  event.target.classList.toggle('hover-effect');
+}
+
+function addDragOverEffects(cell) {
+  cell.addEventListener('dragenter', toggleHoverEffect);
+  cell.addEventListener('dragleave', toggleHoverEffect);
+}
+
 function generateCell(cellState, boardFactory) {
   const cell = document.createElement('div');
   cell.classList.add('cell');
+  addDragOverEffects(cell);
 
   if (cellState !== boardFactory.whiteSpace()
     && cellState !== boardFactory.hitBoardMark()
@@ -15,6 +25,7 @@ function generateCell(cellState, boardFactory) {
 function generateBoard(board, boardFactory) {
   const container = document.createElement('div');
   container.addEventListener('dragover', (event) => { event.preventDefault(); });
+
   const gridSize = board.length;
 
   for (let i = 0; i < gridSize; i += 1) {
