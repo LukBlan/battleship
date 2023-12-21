@@ -1,3 +1,23 @@
+@font-face {
+  font-family: 'press-start';
+  src: url(asset/21503c6a5385ab41dde9.TTF);
+}
+
+@font-face {
+  font-family: 'arcade-classic';
+  src: url(asset/8f36b955d042951fd3af.ttf);
+}
+
+@font-face {
+  font-family: 'invasion-2000';
+  src: url(asset/425fab9beb2bfdf395be.TTF);
+}
+
+:root {
+  --main-color: red;
+  --secondary-color: #595353;
+}
+
 *, *::after, *::before {
   margin: 0;
   padding: 0;
@@ -17,29 +37,33 @@ header {
   padding: 10px;
   display: grid;
   justify-content: center;
-  background-color: #000;
+  background-color: var(--main-color);
   align-items: center;
   box-shadow: 0 0 1px rgba(255,255,255,0.5);
 }
 
 h1 {
+  font-family: 'press-start', sans-serif;
+  padding: 10px;
   font-size: 4.5rem;
   grid-column: 3/4;
 }
 
 .game-section {
   position: relative;
+  background: radial-gradient(white, transparent);
 }
 
 .menu-button {
+  font-family: 'invasion-2000', sans-serif;
   cursor: pointer;
   box-shadow: 1px 4px 1px rgb(33,33,33);
   border: 1px solid black;
   padding: 8px 16px;
   font-weight: bold;
   color: white;
-  background: #333;
-  font-size: 1.2rem;
+  background: var(--main-color);;
+  font-size: 1.5rem;
   transition: all 0.1s;
 }
 
@@ -48,13 +72,14 @@ h1 {
   transform: translateY(3px) translateX(1px);
 }
 .new-game-button {
+  font-family: 'arcade-classic', sans-serif;
   position: absolute;
   font-size: 1.3rem;
   top: 30%;
   left: 50%;
-  box-shadow: 2px 4px 1px rgba(255,0,0,0.5), 0 0 1px 110vh rgba(0,0,0,0.5);
+  box-shadow: 2px 4px 1px rgba(255,0,0,1), 0 0 1px 110vh rgba(0,0,0,0.5);
   border-radius: 5px;
-  background: red;
+  background: var(--main-color);
   color: white;
   padding: 10px;
   font-weight: bold;
@@ -80,36 +105,36 @@ h1 {
 }
 .configuration-screen {
   display: grid;
-  background: black;
-  border: 1px white solid;
-  padding: 20px;
+  background-color: rgb(33,33,33);
   position: absolute;
   top: 50%;
   left: 50%;
-  justify-items: center;
-  gap: 30px;
-  color: white;
+  gap: 10px 20px;
   box-shadow: 2px 2px 1px rgba(255,255,255,1);
   grid-template-columns: 1fr 1fr;
   border-radius: 7px;
   animation: enterFromLeft 0.5s ease-in-out forwards;
+  border: 1px solid rgba(255,255,255, 0.3);
 }
 
 .configuration-title {
-  font-size: 2.5rem;
+  font-family: 'invasion-2000', sans-serif;
+  font-size: 2.7rem;
   grid-column: 1 / -1;
   background-color: white;
-  color: black;
+  color: var(--main-color);
   width: 100%;
   text-align: center;
   border-radius: 5px 5px 0 0;
-  padding: 5px;
+  padding: 10px;
 }
 
 .ships-section {
   display: grid;
-  align-content: space-between;
-  gap: 10px;
+  align-content: start;
+  justify-items: start;
+  margin: 10px;
+  gap: 20px;
 }
 
 @keyframes enterFromLeft {
@@ -126,11 +151,9 @@ h1 {
 .board {
   cursor: crosshair;
   background-color: rgb(0,0,255);
-  display: grid;
-  grid-template-rows: repeat(10, min-content);
-  grid-template-columns: min-content;
   box-shadow: 2px 3px 1px rgb(255,255,255), 2px 0 1px 2px rgb(255,255,255);
   border-radius: 5px;
+  margin: 10px;
 }
 
 .board > div {
