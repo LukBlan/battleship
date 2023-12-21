@@ -53,4 +53,16 @@ function shipElement(size) {
   return ship;
 }
 
-export { shipElement };
+function shipSection(ships) {
+  const container = document.createElement('div');
+  container.classList.add('ships-section');
+
+  ships.forEach((ship) => {
+    const size = ship.getLength();
+    const element = shipElement(size);
+    container.append(element);
+  });
+  return container;
+}
+
+export { shipSection };

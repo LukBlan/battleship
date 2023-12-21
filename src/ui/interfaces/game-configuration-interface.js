@@ -1,22 +1,29 @@
 import { gameConfigurationScreen } from '../components/game-configuration-screen/game-configuration-screen';
 import { subscribe } from '../../services/pub-sub';
 import { boardGrid } from '../components/board-grid/board-grid';
+import { shipSection } from '../components/ship-element/ship-element';
 import { PlaceShipInterface } from './place-ship-interface';
 
 class GameConfigurationInterface {
-  constructor(gameSection, ships, boardFactory) {
+  constructor(gameSection, boardFactory) {
     this.gameSection = gameSection;
-    this.ships = ships;
-    this.configurationScreen = gameConfigurationScreen(this.ships);
+    this.configurationScreen = gameConfigurationScreen();
     this.boardSection = this.configurationScreen.querySelector('.board');
+    this.shipSection = this.configurationScreen.querySelector('.ships-section');
     this.boardFactory = boardFactory;
     this.placeShipInterface = new PlaceShipInterface(this.boardSection);
   }
 
   init() {
     subscribe('configure-new-game', this.renderGameConfiguration.bind(this));
-    subscribe('board-change', this.replaceBoard.bind(this));
+    subscribe('board-change', this.replaceConfigurationObjects.bind(this));
     this.placeShipInterface.init();
+  }
+
+  replaceConfigurationObjects(changeObject) {
+    const { board, ships } = changeObject;
+    this.replaceBoard(board);
+    this.replaceShips(ships);
   }
 
   replaceBoard(newBoard) {
@@ -24,6 +31,13 @@ class GameConfigurationInterface {
     this.configurationScreen.replaceChild(newBoardElement, this.boardSection);
     this.placeShipInterface.setBoardElement(newBoardElement);
     this.boardSection = newBoardElement;
+  }
+
+  replaceShips(ships) {
+    const shipsContainerSection = shipSection(ships);
+    console.log(this.shipSection);
+    this.configurationScreen.replaceChild(shipsContainerSection, this.shipSection);
+    this.shipSection = shipsContainerSection;
   }
 
   renderGameConfiguration() {

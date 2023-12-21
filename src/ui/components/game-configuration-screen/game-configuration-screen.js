@@ -10,11 +10,11 @@ function generateShipSection(ships) {
   return container;
 }
 
-function gameConfigurationScreen(ships) {
+function gameConfigurationScreen() {
   const screen = document.createElement('div');
   const board = document.createElement('div');
   const title = document.createElement('h2');
-  const shipSection = generateShipSection(ships);
+  const shipSection = document.createElement('div');
 
   board.classList.add('board');
   shipSection.classList.add('ships-section');

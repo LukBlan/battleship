@@ -6,7 +6,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  justify-items: center;
   gap: 30px;
   color: white;
   box-shadow: 2px 2px 1px rgba(255,255,255,1);
@@ -28,8 +27,9 @@
 
 .ships-section {
   display: grid;
-  align-content: space-between;
-  gap: 10px;
+  align-content: start;
+  justify-items: start;
+  gap: 20px;
 }
 
 @keyframes enterFromLeft {
