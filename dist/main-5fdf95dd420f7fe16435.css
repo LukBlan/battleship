@@ -71,26 +71,31 @@ h1 {
   box-shadow: 0 0 1px rgb(33,33,33);
   transform: translateY(3px) translateX(1px);
 }
-.new-game-button {
+
+.option-button {
+  padding: 10px 15px;
   font-family: 'arcade-classic', sans-serif;
+  color: white;
+  background: var(--main-color);
+  font-size: 1.2rem;
+  box-shadow: 0px 4px 1px rgba(255,0,0,3.5);
+  border: 1px solid black;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.1s;
+}
+
+.option-button:active {
+  transform: translateY(4px);
+  box-shadow: 0px 0px 1px rgba(255,0,0,3.5);
+}
+button.new-game-button {
   position: absolute;
-  font-size: 1.3rem;
   top: 30%;
   left: 50%;
   box-shadow: 2px 4px 1px rgba(255,0,0,1), 0 0 1px 110vh rgba(0,0,0,0.5);
-  border-radius: 5px;
-  background: var(--main-color);
-  color: white;
-  padding: 10px;
-  font-weight: bold;
-  cursor: pointer;
   animation: showOnScreen 0.4s forwards;
-  border: 1px solid black;
-}
-
-.new-game-button:active {
-  transform: translateX(2px) translateY(5px);
-  box-shadow: 0 0 2px rgba(255,0,0,0.5), 0 0 1px 110vh rgba(0,0,0,0.4);
 }
 
 @keyframes showOnScreen {
@@ -109,7 +114,7 @@ h1 {
   position: absolute;
   top: 50%;
   left: 50%;
-  gap: 10px 20px;
+  gap: 5px 10px;
   box-shadow: 2px 2px 1px rgba(255,255,255,1);
   grid-template-columns: 1fr 1fr;
   border-radius: 7px;
@@ -137,6 +142,14 @@ h1 {
   gap: 20px;
 }
 
+.footer {
+  gap: 15px;
+  grid-column: 1 / -1;
+  justify-content: center;
+  display: flex;
+  padding-bottom: 10px;
+}
+
 @keyframes enterFromLeft {
   0% {
     opacity: 0;
@@ -149,6 +162,7 @@ h1 {
   }
 }
 .board {
+  padding: 1px;
   cursor: crosshair;
   display: grid;
   background-color: rgb(0,0,255);
@@ -167,8 +181,8 @@ div.hover-effect {
 }
 
 .cell {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
 }
 
 .cell:hover {
@@ -183,8 +197,8 @@ div.hover-effect {
 }
 
 .ship-block {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   background-color: #595353;
   padding: 10px;
   border-radius: 100%;
