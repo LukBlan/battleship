@@ -8,6 +8,12 @@ class GameController {
 
   init() {
     subscribe('configure-new-game', this.newGameConfiguration.bind(this));
+    subscribe('start-game', this.newGame.bind(this));
+    this.gameFactory.init();
+  }
+
+  newGame() {
+    this.game = this.gameFactory.create();
   }
 
   newGameConfiguration() {

@@ -1,15 +1,18 @@
 import './game-configuration-screen.css';
 import { randomButton } from '../option-buttons/random-button';
 import { resetButton } from '../option-buttons/reset-button';
+import { startGameButton } from '../option-buttons/start-game-button';
 
 function createFooter() {
   const footer = document.createElement('div');
   const randomBtn = randomButton();
   const resetBtn = resetButton();
+  const startBtn = startGameButton();
 
   footer.classList.add('footer');
   footer.append(randomBtn);
   footer.append(resetBtn);
+  footer.append(startBtn);
   return footer;
 }
 

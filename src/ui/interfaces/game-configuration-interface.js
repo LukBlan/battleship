@@ -35,7 +35,6 @@ class GameConfigurationInterface {
 
   replaceShips(ships) {
     const shipsContainerSection = shipSection(ships);
-    console.log(this.shipSection);
     this.configurationScreen.replaceChild(shipsContainerSection, this.shipSection);
     this.shipSection = shipsContainerSection;
   }
