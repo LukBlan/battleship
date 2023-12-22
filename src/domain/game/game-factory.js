@@ -11,12 +11,12 @@ class GameFactory {
 
   init() {
     subscribe('place-ships-in-random-location', this.placeInRandomPosition.bind(this));
+    subscribe('reset-ships', this.reset.bind(this));
     this.boardBuilder.setInitialShips(this.getShipsCopy());
     this.boardBuilder.init();
   }
 
   placeInRandomPosition() {
-    console.log('here');
     this.reset();
     this.boardBuilder.placeInRandomPosition();
   }
