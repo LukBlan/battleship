@@ -1,6 +1,7 @@
 import { Game } from './game';
 import { HumanPlayer } from '../players/HumanPlayer';
 import { Ship } from '../ship';
+import { subscribe } from '../../services/pub-sub';
 
 class GameFactory {
   constructor(boardBuilder, initialShips) {
@@ -9,8 +10,15 @@ class GameFactory {
   }
 
   init() {
+    subscribe('place-ships-in-random-location', this.placeInRandomPosition.bind(this));
     this.boardBuilder.setInitialShips(this.getShipsCopy());
     this.boardBuilder.init();
+  }
+
+  placeInRandomPosition() {
+    console.log('here');
+    this.reset();
+    this.boardBuilder.placeInRandomPosition();
   }
 
   reset() {

@@ -60,6 +60,27 @@ class GameBoardBuilder {
     this.emitBoard();
   }
 
+  placeInRandomPosition() {
+    this.availableShips.forEach((ship) => {
+      this.placeShipInRandomPosition(ship);
+    });
+
+    this.availableShips = [];
+    this.emitBoard();
+  }
+
+  placeShipInRandomPosition(ship) {
+    const randomRow = Math.floor(Math.random() * this.size);
+    const randomColumn = Math.floor(Math.random() * this.size);
+    const horizontal = Math.random() < 0.5;
+    const randomLocation = new Location(new Coordinates(randomRow, randomColumn), ship, horizontal);
+    if (this.board.canPlaceShip(randomLocation)) {
+      this.board.placeShip(randomLocation);
+    } else {
+      this.placeShipInRandomPosition(ship);
+    }
+  }
+
   emitBoard() {
     const board = this.board.getBoard();
     emit('board-change', { board, ships: this.availableShips });

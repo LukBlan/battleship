@@ -4,7 +4,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  gap: 10px 20px;
+  gap: 5px 10px;
   box-shadow: 2px 2px 1px rgba(255,255,255,1);
   grid-template-columns: 1fr 1fr;
   border-radius: 7px;
@@ -30,6 +30,13 @@
   justify-items: start;
   margin: 10px;
   gap: 20px;
+}
+
+.footer {
+  grid-column: 1 / -1;
+  justify-content: center;
+  display: flex;
+  padding: 5px;
 }
 
 @keyframes enterFromLeft {
