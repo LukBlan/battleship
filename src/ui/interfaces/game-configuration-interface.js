@@ -17,7 +17,13 @@ class GameConfigurationInterface {
   init() {
     subscribe('configure-new-game', this.renderGameConfiguration.bind(this));
     subscribe('board-change', this.replaceConfigurationObjects.bind(this));
+    subscribe('start-game', this.removeConfigurationScreen.bind(this));
     this.placeShipInterface.init();
+  }
+
+  removeConfigurationScreen() {
+    const { parentElement } = this.configurationScreen;
+    parentElement.removeChild(this.configurationScreen);
   }
 
   replaceConfigurationObjects(changeObject) {

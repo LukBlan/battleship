@@ -1,13 +1,13 @@
 import { emit } from '../../services/pub-sub';
 
-class HumanPlayer {
+class ComputerPlayer {
   constructor(board) {
     this.board = board;
   }
 
   emitBoard() {
-    emit('human-board', this.board.getBoard());
+    emit('computer-board', this.board.getBoard());
   }
 }
 
-export { HumanPlayer };
+export { ComputerPlayer };

@@ -2,6 +2,7 @@ import { Game } from './game';
 import { HumanPlayer } from '../players/HumanPlayer';
 import { Ship } from '../ship';
 import { subscribe } from '../../services/pub-sub';
+import { ComputerPlayer } from '../players/ComputerPlayer';
 
 class GameFactory {
   constructor(boardBuilder, initialShips) {
@@ -32,10 +33,17 @@ class GameFactory {
     });
   }
 
+  createComputerPlayer() {
+    this.boardBuilder.reset(this.getShipsCopy());
+    this.boardBuilder.placeInRandomPosition();
+    return new ComputerPlayer(this.boardBuilder.build());
+  }
+
   create() {
     const playerBoard = this.boardBuilder.build();
     const humanPlayer = new HumanPlayer(playerBoard);
-    return new Game([humanPlayer]);
+    const computerPlayer = this.createComputerPlayer();
+    return new Game([humanPlayer, computerPlayer]);
   }
 }
 

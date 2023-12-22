@@ -14,6 +14,7 @@ class GameController {
 
   newGame() {
     this.game = this.gameFactory.create();
+    this.game.emitBoards();
   }
 
   newGameConfiguration() {

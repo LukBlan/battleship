@@ -7,6 +7,10 @@ class Game {
   currentPlayer() {
     this.players[this.turnOrder];
   }
+
+  emitBoards() {
+    this.players.forEach((player) => player.emitBoard());
+  }
 }
 
 export { Game };

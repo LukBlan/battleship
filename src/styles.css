@@ -52,6 +52,9 @@ h1 {
 .game-section {
   position: relative;
   background: radial-gradient(white, transparent);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-button {
