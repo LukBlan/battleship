@@ -52,6 +52,9 @@ h1 {
 .game-section {
   position: relative;
   background: radial-gradient(white, transparent);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-button {
@@ -61,8 +64,8 @@ h1 {
   border: 1px solid black;
   padding: 8px 16px;
   font-weight: bold;
-  color: white;
-  background: var(--main-color);;
+  color: black;
+  background: white;
   font-size: 1.5rem;
   transition: all 0.1s;
 }
@@ -75,8 +78,6 @@ h1 {
 .option-button {
   padding: 10px 15px;
   font-family: 'arcade-classic', sans-serif;
-  color: white;
-  background: var(--main-color);
   font-size: 1.2rem;
   box-shadow: 0px 4px 1px rgba(255,0,0,3.5);
   border: 1px solid black;
@@ -84,6 +85,8 @@ h1 {
   cursor: pointer;
   font-weight: bold;
   transition: all 0.1s;
+  background: white;
+  color: black;
 }
 
 .option-button:active {
@@ -111,9 +114,6 @@ button.new-game-button {
 .configuration-screen {
   display: grid;
   background-color: rgb(33,33,33);
-  position: absolute;
-  top: 50%;
-  left: 50%;
   gap: 5px 10px;
   box-shadow: 2px 2px 1px rgba(255,255,255,1);
   grid-template-columns: 1fr 1fr;
@@ -153,12 +153,11 @@ button.new-game-button {
 @keyframes enterFromLeft {
   0% {
     opacity: 0;
-    transform: translateX(-200%) translateY(-50%);
+    transform: translateX(-200%);
   }
 
   100% {
     opacity: 1;
-    transform: translateY(-50%) translateX(-50%);
   }
 }
 .board {
@@ -216,4 +215,8 @@ div.hover-effect {
 
 .cell.ship-block:hover {
   background-color: #747272;
+}
+.match-section {
+  display: grid;
+  grid-template-columns: min-content min-content;
 }
