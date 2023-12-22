@@ -193,6 +193,7 @@ div.hover-effect {
   width: min-content;
   border-radius: 4px;
   cursor: move;
+  animation: showOnScreen 0.4s forwards;
 }
 
 .ship-block {
