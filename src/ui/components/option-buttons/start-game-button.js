@@ -1,4 +1,3 @@
-import { emit } from '../../../services/pub-sub';
 import './option-buttons.css';
 
 function startGameButton() {
