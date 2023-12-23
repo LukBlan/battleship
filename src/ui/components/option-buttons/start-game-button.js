@@ -1,14 +1,12 @@
 import { emit } from '../../../services/pub-sub';
-
-function emitStartGameEvent() {
-  emit('start-game', null);
-}
+import './option-buttons.css';
 
 function startGameButton() {
   const button = document.createElement('button');
   button.innerText = 'Start';
   button.classList.add('option-button');
-  button.addEventListener('click', emitStartGameEvent);
+  button.classList.add('deactivate');
+  button.classList.add('start-game-button');
   return button;
 }
 export { startGameButton };

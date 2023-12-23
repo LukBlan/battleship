@@ -19,6 +19,17 @@ class GameBoardBuilder {
 
   setInitialShips(availableShips) {
     this.availableShips = availableShips;
+    this.emitEventBasedOnShipsAvailable();
+  }
+
+  emitEventBasedOnShipsAvailable() {
+    let eventName = 'ships-available';
+
+    if (this.availableShips.length === 0) {
+      eventName = 'all-ships-on-board';
+    }
+
+    emit(eventName, null);
   }
 
   build() {
@@ -52,12 +63,13 @@ class GameBoardBuilder {
     const index = this.availableShips.findIndex(
       (ship) => ship.getLength() === removeShip.getLength(),
     );
-    this.availableShips.splice(index, 1);
+    const remainingElements = this.availableShips.filter((value, shipIndex) => index !== shipIndex);
+    this.setInitialShips(remainingElements);
   }
 
   reset(availableShips) {
     this.board = new GameBoard(this.boardFctory, this.size);
-    this.availableShips = availableShips;
+    this.setInitialShips(availableShips);
     this.emitBoard();
     this.emitShip();
   }
@@ -66,8 +78,7 @@ class GameBoardBuilder {
     this.availableShips.forEach((ship) => {
       this.placeShipInRandomPosition(ship);
     });
-
-    this.availableShips = [];
+    this.setInitialShips([]);
     this.emitBoard();
     this.emitShip();
   }
