@@ -14,10 +14,10 @@ function generateCell(cellState, boardFactory) {
   cell.classList.add('cell');
   addDragOverEffects(cell);
 
-  if (cellState !== boardFactory.whiteSpace()
-    && cellState !== boardFactory.hitBoardMark()
-    && cellState !== boardFactory.missBoardMark()) {
+  if (cellState !== boardFactory.whiteSpace() && cellState !== boardFactory.hitBoardMark() && cellState !== boardFactory.missBoardMark()) {
     cell.classList.add('ship-block');
+  } else if (cellState === boardFactory.missBoardMark()) {
+    cell.classList.add('miss-mark');
   }
   return cell;
 }

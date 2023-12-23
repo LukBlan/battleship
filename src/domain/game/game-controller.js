@@ -15,6 +15,13 @@ class GameController {
   newGame() {
     this.game = this.gameFactory.create();
     this.game.emitBoards();
+    this.gameLoop();
+  }
+
+  gameLoop() {
+    const currentPlayer = this.game.getCurrentPlayer();
+    const opponentPlayer = this.game.getOpponentPlayer();
+    currentPlayer.makeMoveTo(opponentPlayer);
   }
 
   newGameConfiguration() {

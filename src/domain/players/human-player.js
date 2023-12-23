@@ -5,8 +5,17 @@ class HumanPlayer {
     this.board = board;
   }
 
+  makeMoveTo(opponentPlayer) {
+    opponentPlayer.letOpponentAttackBoard();
+    // emit('make-move-to-computer-player', opponentPlayer);
+  }
+
   emitBoard() {
     emit('human-board', this.board.getBoard());
+  }
+
+  letOpponentAttackBoard() {
+
   }
 }
 

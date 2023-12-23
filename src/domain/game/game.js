@@ -4,8 +4,13 @@ class Game {
     this.turnOrder = 0;
   }
 
-  currentPlayer() {
-    this.players[this.turnOrder];
+  getCurrentPlayer() {
+    return this.players[this.turnOrder];
+  }
+
+  getOpponentPlayer() {
+    const playerIndex = (this.turnOrder + 1) % this.players.length;
+    return this.players[playerIndex];
   }
 
   emitBoards() {

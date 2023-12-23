@@ -82,6 +82,12 @@ class GameBoard {
     return futureBoard.canPlaceShip(newLocation);
   }
 
+  attackWithCoordinates(coordinates) {
+    const { row, column } = coordinates;
+    const attackCoordinate = new Coordinates(column, row);
+    this.attackPlace(attackCoordinate);
+  }
+
   attackPlace(coordinates) {
     const xPosition = coordinates.getX();
     const yPosition = coordinates.getY();
