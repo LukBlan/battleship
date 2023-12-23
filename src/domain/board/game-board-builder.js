@@ -44,6 +44,7 @@ class GameBoardBuilder {
       this.board.placeShip(locationObject);
       this.removeAvailableShip(ship);
       this.emitBoard();
+      this.emitShip();
     }
   }
 
@@ -58,6 +59,7 @@ class GameBoardBuilder {
     this.board = new GameBoard(this.boardFctory, this.size);
     this.availableShips = availableShips;
     this.emitBoard();
+    this.emitShip();
   }
 
   placeInRandomPosition() {
@@ -67,6 +69,7 @@ class GameBoardBuilder {
 
     this.availableShips = [];
     this.emitBoard();
+    this.emitShip();
   }
 
   placeShipInRandomPosition(ship) {
@@ -74,6 +77,7 @@ class GameBoardBuilder {
     const randomColumn = Math.floor(Math.random() * this.size);
     const horizontal = Math.random() < 0.5;
     const randomLocation = new Location(new Coordinates(randomRow, randomColumn), ship, horizontal);
+
     if (this.board.canPlaceShip(randomLocation)) {
       this.board.placeShip(randomLocation);
     } else {
@@ -83,7 +87,11 @@ class GameBoardBuilder {
 
   emitBoard() {
     const board = this.board.getBoard();
-    emit('board-change', { board, ships: this.availableShips });
+    emit('board-change', board);
+  }
+
+  emitShip() {
+    emit('ship-change', this.availableShips);
   }
 }
 
