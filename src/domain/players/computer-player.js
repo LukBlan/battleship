@@ -6,7 +6,7 @@ class ComputerPlayer {
   }
 
   emitBoard() {
-    emit('computer-board', this.board.getBoard());
+    emit('computer-board', this.board.getHiddenBoard());
   }
 }
 

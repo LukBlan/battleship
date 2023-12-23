@@ -21,6 +21,10 @@ class GameBoardFactory {
     return board;
   }
 
+  notShipMarks() {
+    return [this.whiteSpace(), this.hitBoardMark(), this.missBoardMark()];
+  }
+
   getBoardRow(size) {
     const whiteSpace = this.whiteSpace();
     const boardRow = [];

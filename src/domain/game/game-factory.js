@@ -1,8 +1,8 @@
 import { Game } from './game';
-import { HumanPlayer } from '../players/HumanPlayer';
+import { HumanPlayer } from '../players/human-player';
 import { Ship } from '../ship';
 import { subscribe } from '../../services/pub-sub';
-import { ComputerPlayer } from '../players/ComputerPlayer';
+import { ComputerPlayer } from '../players/computer-player';
 
 class GameFactory {
   constructor(boardBuilder, initialShips) {

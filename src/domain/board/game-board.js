@@ -14,6 +14,19 @@ class GameBoard {
     this.board = newBoard;
   }
 
+  getHiddenBoard() {
+    const notShipMarks = this.boardFactory.notShipMarks();
+
+    return this.board.map(
+      (boardRow) => boardRow.map((element) => {
+        if (!notShipMarks.includes(element)) {
+          return this.boardFactory.whiteSpace();
+        }
+        return element;
+      }),
+    );
+  }
+
   getBoard() {
     return this.board;
   }
