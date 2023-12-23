@@ -1,4 +1,19 @@
 .match-section {
   display: grid;
   grid-template-columns: min-content min-content;
+  background: black;
+  padding: 15px;
+  border-radius: 17px;
+  gap: 15px;
+  animation: enterFromLeft 0.5s ease-in-out forwards;
+}
+
+.player-section {
+  text-align: center;
+}
+
+.player-title {
+  font-size: 2.2rem;
+  font-family: 'press-start', sans-serif;
+  color: white;
 }
