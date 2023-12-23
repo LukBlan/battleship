@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'press-start';
-  src: url("../assets/press-start2.ttf");
+  src: url("../assets/press-start2.woff2");
 }
 
 @font-face {
   font-family: 'arcade-classic';
-  src: url("../assets/arcade-classic.ttf");
+  src: url("../assets/arcade-classic.woff2");
 }
 
 @font-face {
   font-family: 'invasion-2000';
-  src: url("../assets/invasion-2000.TTF");
+  src: url("../assets/invasion-2000.woff2");
 }
 
 :root {
