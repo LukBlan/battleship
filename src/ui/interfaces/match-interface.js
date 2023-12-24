@@ -17,6 +17,7 @@ class MatchInterface {
     subscribe('computer-board', this.displayComputerBoard.bind(this));
     subscribe('human-board', this.displayHumanBoard.bind(this));
     subscribe('active-compute-board-attacks', this.activeComputerBoard.bind(this));
+    subscribe('game-over', this.showResult.bind(this));
   }
 
   activeComputerBoard(validMoves) {
@@ -25,13 +26,19 @@ class MatchInterface {
       const yPosition = event.clientY;
       const coordinateObject = { xPosition, yPosition };
       const coordinates = getBoardCoordinatesFromClick(coordinateObject, this.computerBoard);
-      const { row, column } = coordinates;
+      const columnMove = coordinates.column;
+      const rowMove = coordinates.row;
 
-      if (validMoves.some((coordinate) => coordinate.row === row && coordinates.column === column)) {
-        console.log('valid move');
+      if (validMoves.some(
+        (coordinate) => coordinate.row === rowMove && coordinate.column === columnMove,
+      )) {
         emit('attack-computer-board', coordinates);
       }
     });
+  }
+
+  showResult() {
+    console.log('Game over');
   }
 
   displayGameSection() {

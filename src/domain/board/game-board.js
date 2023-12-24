@@ -165,9 +165,16 @@ class GameBoard {
   }
 
   getValidMoves() {
-    return this.board.map(
+    const allMoves = this.board.map(
       (row, rowIndex) => row.map((column, columnIndex) => ({ column: columnIndex, row: rowIndex })),
     ).flat();
+
+    return allMoves.filter((move) => {
+      const { column, row } = move;
+      const mark = this.board[row][column];
+      return mark !== this.boardFactory.hitBoardMark()
+        && mark !== this.boardFactory.missBoardMark();
+    });
   }
 
   emptyLocation(row, column) {
