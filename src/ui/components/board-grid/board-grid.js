@@ -14,10 +14,14 @@ function generateCell(cellState, boardFactory) {
   cell.classList.add('cell');
   addDragOverEffects(cell);
 
-  if (cellState !== boardFactory.whiteSpace() && cellState !== boardFactory.hitBoardMark() && cellState !== boardFactory.missBoardMark()) {
+  if (!boardFactory.notShipMarks().includes(cellState)) {
     cell.classList.add('ship-block');
-  } else if (cellState === boardFactory.missBoardMark()) {
+  } else if (boardFactory.isMissMark(cellState)) {
     cell.classList.add('miss-mark');
+    cell.innerText = 'X';
+  } else if (boardFactory.isHitMark(cellState)) {
+    cell.classList.add('ship-block');
+    cell.classList.add('hit-mark');
   }
   return cell;
 }

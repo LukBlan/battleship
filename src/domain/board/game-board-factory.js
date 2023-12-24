@@ -36,6 +36,14 @@ class GameBoardFactory {
     return boardRow;
   }
 
+  isMissMark(mark) {
+    return this.missBoardMark() === mark;
+  }
+
+  isHitMark(mark) {
+    return this.hitBoardMark() === mark;
+  }
+
   generateCopy(board) {
     return board.map((row) => [...row]);
   }

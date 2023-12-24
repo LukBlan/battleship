@@ -27,5 +27,16 @@ div.hover-effect {
 }
 
 .miss-mark {
-  background-color: black !important;
+  color: white;
+  line-height: 38px;
+  background: mediumblue;
+}
+
+div.hit-mark {
+  color: white;
+  background-color: red;
+}
+
+div.cell.hit-mark:hover {
+  background-color: indianred;
 }

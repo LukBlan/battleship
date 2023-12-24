@@ -48,6 +48,7 @@ class MatchInterface {
     const { parentElement } = this.computerBoard;
     parentElement.replaceChild(newBoardElement, this.computerBoard);
     this.computerBoard = newBoardElement;
+    this.activeComputerBoard();
   }
 }
 
