@@ -16,6 +16,10 @@ class Game {
   emitBoards() {
     this.players.forEach((player) => player.emitBoard());
   }
+
+  increaseTurnOrder() {
+    this.turnOrder = (this.turnOrder + 1) % this.players.length;
+  }
 }
 
 export { Game };

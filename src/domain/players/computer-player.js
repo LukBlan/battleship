@@ -7,12 +7,25 @@ class ComputerPlayer {
   }
 
   makeMoveTo(opponentPlayer) {
-    console.log('Computer Move');
+    const validMoves = opponentPlayer.getValidMoves();
+    const randomIndex = this.getRandomIndex(validMoves);
+    const randomCoordinate = validMoves[randomIndex];
+    opponentPlayer.letOpponentAttackBoard(randomCoordinate);
+  }
+
+  getRandomIndex(array) {
+    return Math.floor(Math.random() * array.length);
   }
 
   receiveAttackCoordinates(coordinates) {
     this.board.attackWithCoordinates(coordinates);
     this.emitBoard();
+
+    if (this.board.allShipAreSunk()) {
+      emit('game-over', null);
+    } else {
+      emit('next-turn', null);
+    }
   }
 
   emitBoard() {
@@ -20,7 +33,8 @@ class ComputerPlayer {
   }
 
   letOpponentAttackBoard() {
-    emit('active-compute-board-attacks', null);
+    const validMoves = this.board.getValidMoves();
+    emit('active-compute-board-attacks', validMoves);
   }
 }
 

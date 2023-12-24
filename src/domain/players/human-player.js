@@ -14,8 +14,19 @@ class HumanPlayer {
     emit('human-board', this.board.getBoard());
   }
 
-  letOpponentAttackBoard() {
+  letOpponentAttackBoard(randomCoordinate) {
+    this.board.attackWithCoordinates(randomCoordinate);
+    this.emitBoard();
 
+    if (this.board.allShipAreSunk()) {
+      emit('game-over', null);
+    } else {
+      emit('next-turn', null);
+    }
+  }
+
+  getValidMoves() {
+    return this.board.getValidMoves();
   }
 }
 

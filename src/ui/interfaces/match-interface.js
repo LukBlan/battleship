@@ -19,13 +19,18 @@ class MatchInterface {
     subscribe('active-compute-board-attacks', this.activeComputerBoard.bind(this));
   }
 
-  activeComputerBoard() {
+  activeComputerBoard(validMoves) {
     this.computerBoard.addEventListener('click', (event) => {
       const xPosition = event.clientX;
       const yPosition = event.clientY;
       const coordinateObject = { xPosition, yPosition };
       const coordinates = getBoardCoordinatesFromClick(coordinateObject, this.computerBoard);
-      emit('attack-computer-board', coordinates);
+      const { row, column } = coordinates;
+
+      if (validMoves.some((coordinate) => coordinate.row === row && coordinates.column === column)) {
+        console.log('valid move');
+        emit('attack-computer-board', coordinates);
+      }
     });
   }
 
@@ -48,7 +53,6 @@ class MatchInterface {
     const { parentElement } = this.computerBoard;
     parentElement.replaceChild(newBoardElement, this.computerBoard);
     this.computerBoard = newBoardElement;
-    this.activeComputerBoard();
   }
 }
 

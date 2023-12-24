@@ -164,6 +164,12 @@ class GameBoard {
     return notShipOnPlace;
   }
 
+  getValidMoves() {
+    return this.board.map(
+      (row, rowIndex) => row.map((column, columnIndex) => ({ column: columnIndex, row: rowIndex })),
+    ).flat();
+  }
+
   emptyLocation(row, column) {
     return this.board[row][column] === this.boardFactory.whiteSpace();
   }

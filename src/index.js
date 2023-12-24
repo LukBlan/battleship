@@ -6,7 +6,7 @@ import { GameConfigurationInterface } from './ui/interfaces/game-configuration-i
 import { GameBoardBuilder } from './domain/board/game-board-builder';
 import { GameBoardFactory } from './domain/board/game-board-factory';
 import { Ship } from './domain/ship';
-import { MatchInterface } from './ui/interfaces/MatchInterface';
+import { MatchInterface } from './ui/interfaces/match-interface';
 
 // Domain dependencies
 const ships = [
