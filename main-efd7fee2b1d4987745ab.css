@@ -1,16 +1,16 @@
 @font-face {
   font-family: 'press-start';
-  src: url(asset/21503c6a5385ab41dde9.ttf);
+  src: url(asset/4fcb671bec347cfb1c80.woff2);
 }
 
 @font-face {
   font-family: 'arcade-classic';
-  src: url(asset/8f36b955d042951fd3af.ttf);
+  src: url(asset/3456b8fa728721089ddd.woff2);
 }
 
 @font-face {
   font-family: 'invasion-2000';
-  src: url(asset/425fab9beb2bfdf395be.TTF);
+  src: url(asset/77c1f1309137eafeaa6d.woff2);
 }
 
 :root {
@@ -73,25 +73,6 @@ h1 {
 .menu-button:active {
   box-shadow: 0 0 1px rgb(33,33,33);
   transform: translateY(3px) translateX(1px);
-}
-
-.option-button {
-  padding: 10px 15px;
-  font-family: 'arcade-classic', sans-serif;
-  font-size: 1.2rem;
-  box-shadow: 0px 4px 1px rgba(255,0,0,3.5);
-  border: 1px solid black;
-  border-radius: 7px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: all 0.1s;
-  background: white;
-  color: black;
-}
-
-.option-button:active {
-  transform: translateY(4px);
-  box-shadow: 0px 0px 1px rgba(255,0,0,3.5);
 }
 button.new-game-button {
   position: absolute;
@@ -160,6 +141,34 @@ button.new-game-button {
     opacity: 1;
   }
 }
+.option-button {
+  padding: 10px 15px;
+  font-family: 'arcade-classic', sans-serif;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 1px rgba(255,0,0,3.5);
+  border: 1px solid black;
+  border-radius: 7px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.1s;
+  background: white;
+  color: black;
+}
+
+.option-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 1px rgba(255,0,0,3.5);
+}
+
+button.deactivate {
+  box-shadow: 0 0 1px rgba(255,0,0,3.5);
+  cursor: no-drop;
+  transform: translateY(4px);
+}
+
+button.start-game-button {
+  transition: 0.3s all;
+}
 .board {
   padding: 1px;
   cursor: crosshair;
@@ -186,6 +195,20 @@ div.hover-effect {
 
 .cell:hover {
   background-color: rgb(0,0,200);
+}
+
+.miss-mark {
+  color: white;
+  line-height: 38px;
+}
+
+div.hit-mark {
+  color: white;
+  background-color: red;
+}
+
+div.cell.hit-mark:hover {
+  background-color: indianred;
 }
 .ship {
   display: flex;
@@ -220,4 +243,19 @@ div.hover-effect {
 .match-section {
   display: grid;
   grid-template-columns: min-content min-content;
+  background: black;
+  padding: 15px;
+  border-radius: 17px;
+  gap: 15px;
+  animation: enterFromLeft 0.5s ease-in-out forwards;
+}
+
+.player-section {
+  text-align: center;
+}
+
+.player-title {
+  font-size: 2.2rem;
+  font-family: 'press-start', sans-serif;
+  color: white;
 }
