@@ -42,7 +42,7 @@ function locateShipOnGrid(event) {
   const shipLength = event.target.children.length;
   const xPosition = event.clientX;
   const yPosition = event.clientY;
-  const locateActionObject = { xPosition, yPosition, shipLength };
+  const locateActionObject = { coordinates: { xPosition, yPosition }, shipLength };
   emit('ship-location-coordinates', locateActionObject);
 }
 

@@ -32,7 +32,7 @@ class PlaceShipInterface {
 
   placeShip(placeShipObject) {
     const coordinates = getBoardCoordinatesFromClick(placeShipObject.coordinates, this.boardElement);
-    const row = coordinates;
+    const { row } = coordinates;
     const column = coordinates.column - this.deltaPosition;
     const { shipLength } = placeShipObject;
     emit('place-ship', { row, column, shipLength });
