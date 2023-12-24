@@ -69,8 +69,8 @@ describe('GameBoard class', () => {
 
     it('should mark the grid', () => {
       gameBoard.placeShip(location);
-      gameBoard.attackPlace(coordinates);
-      expect(gameBoard.emptyLocation(4, 4)).toBeFalsy();
+      gameBoard.attackPlace(new Coordinates(4, 5));
+      expect(gameBoard.emptyLocation(4, 5)).toBeFalsy();
     });
 
     it('should mark the grid after missing a shot', () => {

@@ -91,16 +91,17 @@ class GameBoard {
   attackPlace(coordinates) {
     const xPosition = coordinates.getX();
     const yPosition = coordinates.getY();
-    const boardMark = this.board[xPosition][yPosition];
+    const boardMark = this.board[yPosition][xPosition];
+    let newMark = this.boardFactory.missBoardMark();
 
     if (this.allLocatedShips.has(boardMark)) {
       const location = this.allLocatedShips.get(boardMark);
       const { ship } = location;
       ship.hit();
-      this.board[xPosition][yPosition] = this.boardFactory.hitBoardMark();
-    } else {
-      this.board[xPosition][yPosition] = this.boardFactory.missBoardMark();
+      newMark = this.boardFactory.hitBoardMark();
     }
+
+    this.board[yPosition][xPosition] = newMark;
   }
 
   allShipAreSunk() {
