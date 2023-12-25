@@ -1,12 +1,12 @@
 button.new-game-button {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   box-shadow: 2px 4px 1px rgba(255,0,0,1), 0 0 1px 110vh rgba(0,0,0,0.5);
-  animation: showOnScreen 0.4s forwards;
+  animation: rotateToCenter 0.4s forwards;
 }
 
-@keyframes showOnScreen {
+@keyframes rotateToCenter {
   0% {
     opacity: 0;
     transform: translateX(-400%) rotate(-90deg);
@@ -14,5 +14,6 @@ button.new-game-button {
 
   100% {
     opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
   }
 }

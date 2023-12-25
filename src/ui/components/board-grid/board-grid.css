@@ -39,3 +39,8 @@ div.hit-mark {
 div.cell.hit-mark:hover {
   background-color: indianred;
 }
+
+div.cell.hit-mark:hover,
+div.cell.miss-mark:hover {
+  cursor: not-allowed;
+}
