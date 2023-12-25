@@ -1,8 +1,9 @@
-import { emit, subscribe } from '../../services/pub-sub';
+import { emit, reset, subscribe } from '../../services/pub-sub';
 
 class ComputerPlayer {
   constructor(board) {
     this.board = board;
+    reset('attack-computer-board');
     subscribe('attack-computer-board', this.receiveAttackCoordinates.bind(this));
   }
 

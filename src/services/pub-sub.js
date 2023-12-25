@@ -12,4 +12,8 @@ function emit(eventName, data) {
   events[eventName].forEach((handler) => handler(data));
 }
 
-export { subscribe, emit };
+function reset(eventName) {
+  events[eventName] = [];
+}
+
+export { subscribe, emit, reset };

@@ -11,6 +11,7 @@ class MatchInterface {
     this.matchScreen = null;
     this.humanBoard = null;
     this.computerBoard = null;
+    this.gameOverScreen = null;
   }
 
   init() {
@@ -19,6 +20,19 @@ class MatchInterface {
     subscribe('human-board', this.displayHumanBoard.bind(this));
     subscribe('active-compute-board-attacks', this.activeComputerBoard.bind(this));
     subscribe('game-over', this.showResult.bind(this));
+    subscribe('configure-new-game', this.removeGameScreens.bind(this));
+  }
+
+  removeGameScreens() {
+    if (this.gameOverScreen !== null) {
+      this.gameOverScreen.parentElement.removeChild(this.gameOverScreen);
+      this.gameOverScreen = null;
+    }
+
+    if (this.matchScreen !== null) {
+      this.matchScreen.parentElement.removeChild(this.matchScreen);
+      this.matchScreen = null;
+    }
   }
 
   activeComputerBoard(validMoves) {
@@ -41,6 +55,7 @@ class MatchInterface {
   showResult(message) {
     const endGameScreen = gameOverScreen(message);
     this.gameSection.append(endGameScreen);
+    this.gameOverScreen = endGameScreen;
   }
 
   displayGameSection() {
