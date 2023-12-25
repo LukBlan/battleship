@@ -76,13 +76,13 @@ h1 {
 }
 button.new-game-button {
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
   box-shadow: 2px 4px 1px rgba(255,0,0,1), 0 0 1px 110vh rgba(0,0,0,0.5);
-  animation: showOnScreen 0.4s forwards;
+  animation: rotateToCenter 0.4s forwards;
 }
 
-@keyframes showOnScreen {
+@keyframes rotateToCenter {
   0% {
     opacity: 0;
     transform: translateX(-400%) rotate(-90deg);
@@ -90,6 +90,7 @@ button.new-game-button {
 
   100% {
     opacity: 1;
+    transform: translateX(-50%) translateY(-50%);
   }
 }
 .configuration-screen {
@@ -210,6 +211,11 @@ div.hit-mark {
 div.cell.hit-mark:hover {
   background-color: indianred;
 }
+
+div.cell.hit-mark:hover,
+div.cell.miss-mark:hover {
+  cursor: not-allowed;
+}
 .ship {
   display: flex;
   background-color: white;
@@ -224,8 +230,8 @@ div.cell.hit-mark:hover {
   height: 40px;
   background-color: #595353;
   padding: 10px;
-  border-radius: 100%;
-  box-shadow: 1px 3px 1px white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 1px white;
 }
 
 /* Ship placed in grid */
@@ -239,6 +245,17 @@ div.cell.hit-mark:hover {
 
 .cell.ship-block:hover {
   background-color: #747272;
+}
+
+@keyframes showOnScreen {
+  0% {
+    opacity: 0;
+    transform: translateX(-400%) rotate(-90deg);
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 .match-section {
   display: grid;
@@ -258,4 +275,23 @@ div.cell.hit-mark:hover {
   font-size: 2.2rem;
   font-family: 'press-start', sans-serif;
   color: white;
+}
+.game-over-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px rgba(255,255,255,1.1), 1px 1px 0px 110vh rgba(0,0,0,0.4);
+  animation: rotateToCenter 0.4s forwards;
+  background: black;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.game-over-screen > h3 {
+  font-size: 2rem;
+  font-family: 'arcade-classic', sans-serif;
 }
