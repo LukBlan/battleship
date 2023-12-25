@@ -2,6 +2,7 @@ import { emit, subscribe } from '../../services/pub-sub';
 import { matchSection } from '../components/match-section/match-section';
 import { boardGrid } from '../components/board-grid/board-grid';
 import { getBoardCoordinatesFromClick } from '../../services/board-cordinates-from-click';
+import { gameOverScreen } from '../components/game-over-screen/game-over-screen';
 
 class MatchInterface {
   constructor(gameSection, boardFactory) {
@@ -37,8 +38,9 @@ class MatchInterface {
     });
   }
 
-  showResult() {
-    console.log('Game over');
+  showResult(message) {
+    const endGameScreen = gameOverScreen(message);
+    this.gameSection.append(endGameScreen);
   }
 
   displayGameSection() {

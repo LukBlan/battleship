@@ -1,0 +1,19 @@
+.game-over-screen {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 1px 1px 1px rgba(255,255,255,1.1), 1px 1px 0px 110vh rgba(0,0,0,0.4);
+  animation: rotateToCenter 0.4s forwards;
+  background: black;
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.game-over-screen > h3 {
+  font-size: 2rem;
+  font-family: 'arcade-classic', sans-serif;
+}

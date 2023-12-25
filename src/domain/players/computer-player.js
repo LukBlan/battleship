@@ -22,7 +22,7 @@ class ComputerPlayer {
     this.emitBoard();
 
     if (this.board.allShipAreSunk()) {
-      emit('game-over', null);
+      emit('game-over', 'You win');
     } else {
       emit('next-turn', null);
     }
