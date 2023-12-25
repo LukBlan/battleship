@@ -26,6 +26,7 @@ function gameConfigurationScreen() {
   board.classList.add('board');
   shipSection.classList.add('ships-section');
   screen.classList.add('configuration-screen');
+  screen.classList.add('main-content-screen');
   title.innerText = 'Arrange your boats';
   title.classList.add('configuration-title');
 

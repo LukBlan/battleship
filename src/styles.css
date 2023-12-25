@@ -58,6 +58,15 @@ h1 {
   justify-content: center;
 }
 
+.main-content-screen {
+  box-shadow: 2px 1px 1px rgba(255,255,255,1);
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 15px;
+  animation: enterFromLeft 0.5s ease-in-out forwards;
+  border: 1px solid rgba(255,255,255, 0.4);
+  padding: 25px;
+}
+
 .menu-button {
   font-family: 'invasion-2000', sans-serif;
   cursor: pointer;

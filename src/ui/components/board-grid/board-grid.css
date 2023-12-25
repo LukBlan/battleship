@@ -1,11 +1,9 @@
 .board {
-  padding: 1px;
   cursor: crosshair;
   display: grid;
   background-color: rgb(0,0,255);
   box-shadow: 8px 0 1px 1px rgb(255,255,255), 2px 0 1px 2px rgb(255,255,255);
   border-radius: 4px;
-  margin: 10px;
   gap: 1px;
 }
 
@@ -15,6 +13,7 @@ div.hover-effect {
 
 .board > div {
   display: flex;
+  gap: 1px;
 }
 
 .cell {

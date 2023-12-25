@@ -21,6 +21,7 @@ function matchSection() {
   const computerBoard = createPlayerSection('Computer Board', 'computer-board');
 
   container.classList.add('match-section');
+  container.classList.add('main-content-screen');
   container.append(playerBoard);
   container.append(computerBoard);
   return container;
