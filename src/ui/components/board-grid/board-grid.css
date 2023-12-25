@@ -3,14 +3,14 @@
   cursor: crosshair;
   display: grid;
   background-color: rgb(0,0,255);
-  box-shadow: 8px -3px 1px 1px rgb(255,255,255), 2px 0 1px 2px rgb(255,255,255);
-  border-radius: 12px;
+  box-shadow: 8px 0px 1px 1px rgb(255,255,255), 2px 0 1px 2px rgb(255,255,255);
+  border-radius: 4px;
   margin: 10px;
-  gap: 3px;
+  gap: 1px;
 }
 
 div.hover-effect {
-  border: 1px solid white;
+  background: rgba(255,255,255,0.6);
 }
 
 .board > div {
@@ -18,8 +18,9 @@ div.hover-effect {
 }
 
 .cell {
-  width: 40px;
-  height: 40px;
+  width: var(--block-size);
+  height: var(--block-size);
+  border: 1px outset white;
 }
 
 .cell:hover {
@@ -29,6 +30,7 @@ div.hover-effect {
 .miss-mark {
   color: white;
   line-height: 38px;
+  background-color: #151572;
 }
 
 div.hit-mark {

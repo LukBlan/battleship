@@ -1,2 +1,2 @@
 # [Battleship](https://lukblan.github.io/battleship/)
-Battleship game
+Web game with drag and drop, ship rotation and some animations
