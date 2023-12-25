@@ -7,7 +7,7 @@
     "build": "webpack --config config/webpack.prod.js",
     "start": "webpack-dev-server --config config/webpack.dev.js --open",
     "test": "jest --coverage",
-      "subTree": "git subtree push --prefix dist origin gh-pages"
+    "subTree": "git subtree push --prefix dist origin gh-pages"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "@babel/preset-env": "^7.23.5",
     "css-loader": "^6.8.1",
+    "css-minimizer-webpack-plugin": "^5.0.1",
     "eslint": "^8.55.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.0",
