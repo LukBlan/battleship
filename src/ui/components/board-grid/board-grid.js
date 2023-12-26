@@ -18,7 +18,6 @@ function generateCell(cellState, boardFactory) {
     cell.classList.add('ship-block');
   } else if (boardFactory.isMissMark(cellState)) {
     cell.classList.add('miss-mark');
-    cell.innerText = 'X';
   } else if (boardFactory.isHitMark(cellState)) {
     cell.classList.add('ship-block');
     cell.classList.add('hit-mark');

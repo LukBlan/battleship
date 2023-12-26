@@ -17,12 +17,14 @@
   --main-color: red;
   --secondary-color: #595353;
   --block-size: 40px;
+  --board-gap: 2px;
 }
 
 *, *::after, *::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  user-select: none;
 }
 
 body {

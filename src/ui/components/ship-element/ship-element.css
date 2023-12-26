@@ -13,10 +13,9 @@
 .ship-block {
   width: var(--block-size);
   height: var(--block-size);
-  background-color: #595353;
+  background-color: rgba(0,0,0,0.9);
   padding: 10px;
   border-radius: 12px;
-  box-shadow: 0 2px 1px white;
   border: 1px solid rgba(0,0,0,0.3)
 }
 
